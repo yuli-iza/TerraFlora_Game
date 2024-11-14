@@ -8,9 +8,7 @@ public class MovingBall : MonoBehaviour
     [Header("Inscribed")]
     
     public GameObject evolutionEffectPrefab;
-
     public GameObject deathEffectPrefab;
-
     public Transform evolutionEffectPosition;
     public Transform deathEffectPosition;
 
@@ -41,6 +39,11 @@ public class MovingBall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (TerraFlora.Instance == null)
+        {
+            return;
+        }
+
         if (isBallStopped)
         {
             return;
@@ -60,8 +63,8 @@ public class MovingBall : MonoBehaviour
                 TriggerDeathEffect();
 
                 // Notify TerraFlora to decrement health
-                TerraFlora terraFlora = Camera.main.GetComponent<TerraFlora>();
-                terraFlora.TargetMissed();
+                //TerraFlora terraFlora = Camera.main.GetComponent<TerraFlora>();
+                //terraFlora.TargetMissed();
 
                 if (TerraFlora.Instance != null)
 {

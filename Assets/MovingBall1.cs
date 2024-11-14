@@ -70,15 +70,20 @@ public class MovingBall1 : MonoBehaviour
                 TriggerDeathEffect();
 
                 // Notify TerraFlora to decrement health
-                TerraFlora terraFlora = Camera.main.GetComponent<TerraFlora>();
-                terraFlora.TargetMissed();
+                //TerraFlora terraFlora = Camera.main.GetComponent<TerraFlora>();
+                //terraFlora.TargetMissed();
 
-                if (terraFlora.health > 0)
-                {
-                    Debug.Log("Missed the target zone!, Health: " + terraFlora.health);
-                    //If health is greater than 0, reset the ball movement
-                    ResetMovement();
-                    // ResetMovement();
+                if (TerraFlora.Instance != null)
+{
+                    TerraFlora.Instance.TargetMissed();
+                    
+                    if (TerraFlora.Instance.health > 0)
+                    {
+                        Debug.Log("Missed the target zone!, Health: " + TerraFlora.Instance.health);
+                        //If health is greater than 0, reset the ball movement
+                        ResetMovement();
+                        // ResetMovement();
+                    }
                 }
 
                 //Debug.Log("Missed the target zone!, Game Over...");
